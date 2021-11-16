@@ -9,13 +9,19 @@
 import Navbar from './components/Navbar'
 import Room from './components/Room'
 
-import {mapState} from 'vuex'
+import {mapState,mapActions} from 'vuex'
 
 export default {
   name: 'App',
   components: { Navbar, Room },
   computed: {
-    ...mapState(['Rooms'])
+    ...mapState(['Rooms','DefaultRooms'])
+  },
+  methods: {
+    ...mapActions(['setRooms']),
+  },
+  created(){
+      this.setRooms(JSON.stringify(this.DefaultRooms))
   }
 }
 </script>
